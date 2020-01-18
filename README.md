@@ -2,24 +2,19 @@ This is a forked project from https://github.com/shershen08/vue-preload
 
 Tool for [Vue.js SSR apps](https://vuejs.org/v2/guide/ssr.html) that include other resources that may be handy to preload to improve performance.
 
-![dependencies status](https://david-dm.org/shershen08/vue-preload/status.svg)
-
-## Demo
-
-Using [vue-ssr-boilerplate](https://github.com/fenivana/vue-ssr-boilerplate)
-
 ## Install
 
 ```sh
-npm install vue-link-preload --save
+npm install vue-link-pre --save
+yarn add vue-link-pre
 ```
 
 ## Usage
 
 ```js
-import Preload from 'vue-link-preload'
+import VueLinkPre from 'vue-link-pre'
 
-Vue.use(Preload)
+Vue.use(VueLinkPre)
 
 // dynamically add single item
 // by default the type 'script' is assigned
