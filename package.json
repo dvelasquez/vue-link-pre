@@ -1,0 +1,36 @@
+{
+  "name": "vue-link-pre",
+  "version": "0.0.1",
+  "description": "Plugin for vuejs to utilize '<link rel=\"preload\"' and '<link rel=\"prefetch\"' functionality",
+  "main": "dist/index.es5.ts",
+  "module": "dist/index.esnext.ts",
+  "scripts": {
+    "build": "rollup -c=rollup.config.js",
+    "watch": "rollup -w -c=rollup.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dvelasquez/vue-link-pre.git"
+  },
+  "keywords": [
+    "preload",
+    "prefetch",
+    "dns-prefetch",
+    "vuejs",
+    "ssr"
+  ],
+  "author": "Danilo Velasquez<me@d13z.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dvelasquez/vue-link-pre/issues"
+  },
+  "homepage": "https://github.com/dvelasquez/vue-link-pre#readme",
+  "devDependencies": {
+    "rollup": "^1.29.0",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "vue": "^2.6.11"
+  }
+}
