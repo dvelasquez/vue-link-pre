@@ -1,6 +1,6 @@
 {
   "name": "vue-link-pre",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Plugin for vuejs to utilize '<link rel=\"preload\"' and '<link rel=\"prefetch\"' functionality",
   "main": "dist/index.es5.js",
   "module": "dist/index.esnext.js",
