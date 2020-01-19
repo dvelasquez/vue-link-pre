@@ -3,7 +3,7 @@ import Vue from 'vue';
 export type ResourceType = 'script' | 'style' | 'image' | 'media' | 'document' | 'font'
 export type ElementRelType = 'prefetch' | 'preload'
 export type ResourceMap = {
-  [k in ResourceType]: string[];
+  [k in ResourceType]?: string[];
 };
 
 declare module 'vue/types/vue' {
