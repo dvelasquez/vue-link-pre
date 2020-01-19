@@ -15,5 +15,14 @@
   "include": [
     "./src/vue.d.ts",
     "./src/**/*"
+  ],
+  "lib": [
+    "esnext",
+    "dom",
+    "dom.iterable",
+    "scripthost"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

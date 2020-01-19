@@ -6,8 +6,8 @@ const INPUT_FILE = 'src/index.ts';
 const OUTPUT_DIR = 'dist';
 
 const formats = [
-  { dist: 'umd', ts: 'es5' },
-  { dist: 'es', ts: 'esnext' },
+  { dist: 'umd', ts: 'es5', ext: 'umd' },
+  { dist: 'es', ts: 'esnext', ext: 'esm' },
 ];
 
 export default formats.map((format) => ({
@@ -23,7 +23,7 @@ export default formats.map((format) => ({
     ...Object.keys(PKG_JSON.peerDependencies || {}),
   ],
   output: {
-    file: path.join(OUTPUT_DIR, `index.${format.ts}.js`),
+    file: path.join(OUTPUT_DIR, `index.${format.ext}.js`),
     format: format.dist,
     sourcemap: true,
     name: PKG_JSON.name,

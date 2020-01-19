@@ -18,29 +18,31 @@ Vue.use(VueLinkPre)
 
 // dynamically add single item
 // by default the type 'script' is assigned
-Vue.addPreloadLink('https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js')
+// and the rel="preload"
+Vue.addPreLink('https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js')
 
 // add multiple items at once
-Vue.preloadGroup({
+Vue.preGroup({
   script: [
     'https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js',
     'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
   ],
   style: ['https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap-reboot.min.css'],
   image: ['https://www.google.nl/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'],
-})
+}, 'prefetch')
 ```
 
 ## API
 
-**Vue.addPreloadLink(link,[ type])**
+**Vue.addPreLink(link, elementRef)**
 
-Preload single resource. You can provide type and optionaly a callback on when the resource is available.
+Preload single resource. You can provide type ('image'|'script'|'font'|'etc') and a elementRef ('preload'|'prefetch')
 
-**Vue.preloadGroup(resourseMap)**
+**Vue.preloadGroup(resourceMap)**
 
 Preload group of resources of multiple types. The map keys are limited to valid preload asset types:
-script, style, image, media, document, font. 
+script, style, image, media, document, font.
+Also, you can define if is a preload or a prefetch.
 
 ## See also
 
