@@ -44,6 +44,10 @@ Preload group of resources of multiple types. The map keys are limited to valid 
 script, style, image, media, document, font.
 Also, you can define if is a preload or a prefetch.
 
+## Other details
+
+This library adds an id using `vue-link-pre${hash}` of the url to preload, to avoid duplicating the element in the DOM.
+
 ## See also
 
 - [smashingmagazine.com Preload: What Is It Good For? By Yoav Weiss](https://www.smashingmagazine.com/2016/02/preload-what-is-it-good-for/)

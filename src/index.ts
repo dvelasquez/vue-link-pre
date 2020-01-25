@@ -18,6 +18,7 @@ declare module 'vue/types/vue' {
 }
 
 
+
 const validateAs = (type: string) => ['', 'script', 'style', 'image', 'media', 'document', 'font'].indexOf(type) > -1;
 const validateRel = (type: string) => ['preload', 'prefetch'].indexOf(type) > -1;
 
@@ -30,6 +31,18 @@ const domTokenListSupports =  (): boolean => {
     return false;
   }
 };
+
+const stringToHash = (str: string): string => {
+  let hash = 0;
+  if (str.length == 0) return hash.toString();
+  for (let i = 0; i < str.length; i++) {
+    let character = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + character;
+    hash = hash & hash;
+  }
+
+  return 'vue-link-pre-'+hash.toString();
+}
 
 const VueLinkPre = {
   install: (Vue: Vue) => {
@@ -46,22 +59,32 @@ const VueLinkPre = {
       if (!validateAs(elementAs)) return;
       if(elementRel === undefined) elementRel = 'preload'
       if (!validateRel(elementRel)) return;
+      const hashedId = stringToHash(elementHref)
+      const element = document.getElementById(hashedId)
+      if(element){
+        const lnk = document.createElement('link');
 
-      const lnk = document.createElement('link');
+        const id = document.createAttribute('id')
+        id.value = hashedId
+        lnk.setAttributeNode(id)
 
-      const rel = document.createAttribute('rel');
-      rel.value = elementRel;
-      lnk.setAttributeNode(rel);
+        const rel = document.createAttribute('rel');
+        rel.value = elementRel;
+        lnk.setAttributeNode(rel);
 
-      const as = document.createAttribute('as');
-      as.value = elementAs;
-      lnk.setAttributeNode(as);
+        const as = document.createAttribute('as');
+        as.value = elementAs;
+        lnk.setAttributeNode(as);
 
-      const href = document.createAttribute('href');
-      href.value = elementHref;
-      lnk.setAttributeNode(href);
+        const href = document.createAttribute('href');
+        href.value = elementHref;
+        lnk.setAttributeNode(href);
 
-      document.head.appendChild(lnk);
+        document.head.appendChild(lnk);
+      } else {
+        console.warn('An element with a same value already exists. Skipping...')
+      }
+
     };
 
     Vue.preGroup = function (resourcesMap: ResourceMap, elementRel: ElementRelType) {
