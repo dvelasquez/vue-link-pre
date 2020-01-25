@@ -61,7 +61,7 @@ const VueLinkPre = {
       if (!validateRel(elementRel)) return;
       const hashedId = stringToHash(elementHref)
       const element = document.getElementById(hashedId)
-      if(element){
+      if(!element){
         const lnk = document.createElement('link');
 
         const id = document.createAttribute('id')
